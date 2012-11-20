@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Escape Scout - Plan trips together</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="css/teuxdeux.css" type="text/css" />
+	<script src="js/bootstrap.js" type="text/javascript"></script>
+	<script src='http://www.google.com/jsapi'></script>
+	<script type='text/javascript'>
+	  //<![CDATA[
+	    google.load("jquery", "1.4.2");
+	    google.load("jqueryui", "1.8.1");
+	  //]]>
+	</script>
+	<script type='text/javascript'>
+	  //<![CDATA[
+	    (function(){
+	      // if firefox 3.5+, hide content till load (or 3 seconds) to prevent FOUC
+	      var d = document, e = d.documentElement, s = d.createElement('style');
+	      if (e.style.MozTransform === ''){ // gecko 1.9.1 inference
+	        s.textContent = 'body{visibility:hidden}';
+	        e.firstChild.appendChild(s);
+	        function f(){ s.parentNode && s.parentNode.removeChild(s); }
+	        addEventListener('load',f,false);
+	        setTimeout(f,3000); 
+	      }
+	    })();
+	  //]]>
+	</script>
+	<title>TeuxDeux</title>
+	<meta content='This is the home page of TeuxDeux, the 16th greatest invention of all time.' name='description' />
+	<meta content='TeuxDeux, teux deux, to do list, to do lists, to do, to dos' name='keywords' />
+	<meta content='index,follow,noarchive' name='robots' />
+	<meta content='noarchive' name='googlebot' />
+	<link href='/images/ipad_icon.png' rel='apple-touch-icon' />
+
+</head>
+
+<body id='users_todo_list'>
+<input id="fluid" name="fluid" type="hidden" value="true" />
+<ul style='display:none'>
+<li class='todo_item' id='todo_item_placeholder'>
+<div class='overflow_abs'>
+<p class='teuxdeux print_show'></p>
+<p class='teuxdeux print_hide'></p>
+<p class='ellipsis'>...</p>
+</div>
+</li>
+</ul>
+<div class='clearFix fluid' id='container'>
+<div class='clearFix' id='content_wrapper'>
+<div id='header'>
+<h1 class='logo'><a href="/list">TeuxDeux</a></h1>
+<ul id='user_controls'>
+<li>
+<span><a href="/list">chuckjohnstone</a></span>
+</li>
+<li><a href="/user/settings">Settings</a></li>
+<li class='settings'><a href="/user_session" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);var s = document.createElement('input'); s.setAttribute('type', 'hidden'); s.setAttribute('name', 'authenticity_token'); s.setAttribute('value', 'gCOjPqVS/8vkVOJn6tE72/KcPnil7Uj+Ivi8wTMOL0U='); f.appendChild(s);f.submit();return false;">Logout</a></li>
+</ul>
+</div>
+
+<div class='arrow' id='left_nav'>
+<div class='rel closed'>
+<a href="/list?date=2012-11-18" class="left single first"></a>
+<div class='jumps'>
+<a href="/list?date=2012-11-14" class="left week"></a>
+<a href="#" id="goto_today"></a>
+</div>
+</div>
+</div>
+<div class='arrow' id='right_nav'>
+<div class='rel closed'>
+<a href="/list?date=2012-11-24" class="right single"></a>
+<div class='jumps'>
+<a href="/list?date=2012-11-24" class="right week"></a>
+<a href="/list?date=2012-11-24" class="calendar_link"></a>
+<input class='calendar_input' id='right_cal' type='hidden' />
+</div>
+</div>
+</div>
+
+<div id='deux_list'>
+<p class='meanwhile'>Meanwhile...</p>
+<div id='scrollContainer'>
+<div class='grey not_done'>
+<div class='day_wrapper clearFix'>
+<h2>
+<span>MONDAY</span>
+</h2>
+<h3>NOVEMBER 19, 2012</h3>
+  <form action="/user/create_todo" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="gCOjPqVS/8vkVOJn6tE72/KcPnil7Uj+Ivi8wTMOL0U=" /></div>
+<input class='todo_item_entry' disabled='disabled' maxlength='140' name='todo_item[todo]' type='text' />
+<input name='todo_item[do_on]' type='hidden' value='2012-11-19' />
+  </form>
+<ul class='list_items' id='list_items_2012-11-19'>
+
+</ul>
+</div>
+</div>
+
+<div class='not_done red' id='today'>
+<div class='day_wrapper clearFix'>
+<h2>
+<span>TUESDAY</span>
+</h2>
+<h3>NOVEMBER 20, 2012</h3>
+  <form action="/user/create_todo" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="gCOjPqVS/8vkVOJn6tE72/KcPnil7Uj+Ivi8wTMOL0U=" /></div>
+<input class='todo_item_entry' maxlength='140' name='todo_item[todo]' type='text' />
+<input name='todo_item[do_on]' type='hidden' value='2012-11-20' />
+  </form>
+<ul class='list_items' id='list_items_2012-11-20'>
+
+</ul>
+</div>
+</div>
+
+<div class='not_done'>
+<div class='day_wrapper clearFix'>
+<h2>
+<span>WEDNESDAY</span>
+</h2>
+<h3>NOVEMBER 21, 2012</h3>
+  <form action="/user/create_todo" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="gCOjPqVS/8vkVOJn6tE72/KcPnil7Uj+Ivi8wTMOL0U=" /></div>
+<input class='todo_item_entry' maxlength='140' name='todo_item[todo]' type='text' />
+<input name='todo_item[do_on]' type='hidden' value='2012-11-21' />
+  </form>
+<ul class='list_items' id='list_items_2012-11-21'>
+
+</ul>
+</div>
+</div>
+
+<div class='not_done'>
+<div class='day_wrapper clearFix'>
+<h2>
+<span>THURSDAY</span>
+</h2>
+<h3>NOVEMBER 22, 2012</h3>
+  <form action="/user/create_todo" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="gCOjPqVS/8vkVOJn6tE72/KcPnil7Uj+Ivi8wTMOL0U=" /></div>
+<input class='todo_item_entry' maxlength='140' name='todo_item[todo]' type='text' />
+<input name='todo_item[do_on]' type='hidden' value='2012-11-22' />
+  </form>
+<ul class='list_items' id='list_items_2012-11-22'>
+
+</ul>
+</div>
+</div>
+
+<div class='not_done'>
+<div class='day_wrapper clearFix'>
+<h2>
+<span>FRIDAY</span>
+</h2>
+<h3>NOVEMBER 23, 2012</h3>
+  <form action="/user/create_todo" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="gCOjPqVS/8vkVOJn6tE72/KcPnil7Uj+Ivi8wTMOL0U=" /></div>
+<input class='todo_item_entry' maxlength='140' name='todo_item[todo]' type='text' />
+<input name='todo_item[do_on]' type='hidden' value='2012-11-23' />
+  </form>
+<ul class='list_items' id='list_items_2012-11-23'>
+
+</ul>
+</div>
+</div>
+
+
+</div>
+<div id='someday'>
+<div class='header'>
+<a href="#" class="triangle open"></a>
+<h2>Someday <a href="#">(0)</a></h2>
+  <form action="/user/create_todo" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="gCOjPqVS/8vkVOJn6tE72/KcPnil7Uj+Ivi8wTMOL0U=" /></div>
+<input maxlength='140' name='todo_item[todo]' type='text' />
+<input name='todo_item[do_on]' type='hidden' value='1989-12-1' />
+  </form>
+</div>
+<div id='someday_list'>
+<div>
+<div class='day_wrapper'>
+<ul class='someday list_items ' id='list_items_1989-12-1'>
+<li id='todo_item_18356895'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Fix WP sites</p>
+<p class='teuxdeux print_show'>Fix WP sites</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/18356895" class="delete">x</a>
+</div>
+</li>
+
+<li id='todo_item_4346480'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Record Album</p>
+<p class='teuxdeux print_show'>Record Album</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/4346480" class="delete">x</a>
+</div>
+</li>
+
+<li id='todo_item_15520444'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Setup CS Blog</p>
+<p class='teuxdeux print_show'>Setup CS Blog</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/15520444" class="delete">x</a>
+</div>
+</li>
+
+<li id='todo_item_15520446'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Setup AB Aweber</p>
+<p class='teuxdeux print_show'>Setup AB Aweber</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/15520446" class="delete">x</a>
+</div>
+</li>
+
+<li id='todo_item_15520454'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Setup AB Template</p>
+<p class='teuxdeux print_show'>Setup AB Template</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/15520454" class="delete">x</a>
+</div>
+</li>
+
+<li id='todo_item_15520456'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Setup Template for CJ.com</p>
+<p class='teuxdeux print_show'>Setup Template for CJ.com</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/15520456" class="delete">x</a>
+</div>
+</li>
+
+<li id='todo_item_15520469'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Setup RSS for ISAC</p>
+<p class='teuxdeux print_show'>Setup RSS for ISAC</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/15520469" class="delete">x</a>
+</div>
+</li>
+
+<li id='todo_item_15948162'>
+<div class='task'>
+<p class='teuxdeux print_hide'>Requirements for Restart A.</p>
+<p class='teuxdeux print_show'>Requirements for Restart A.</p>
+</div>
+<div class='wrap'>
+<p class='ellipsis'>...</p>
+<a href="/user/destroy_todo/15948162" class="delete">x</a>
+</div>
+</li>
+
+</ul>
+</div>
+</div>
+
+<div>
+<div class='day_wrapper'>
+<ul class='someday list_items ' id='list_items_1989-12-2'>
+</ul>
+</div>
+</div>
+
+<div>
+<div class='day_wrapper'>
+<ul class='someday list_items ' id='list_items_1989-12-3'>
+</ul>
+</div>
+</div>
+
+<div>
+<div class='day_wrapper'>
+<ul class='someday list_items ' id='list_items_1989-12-4'>
+</ul>
+</div>
+</div>
+
+<div>
+<div class='day_wrapper'>
+<ul class='someday list_items last' id='list_items_1989-12-5'>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div id='footer'>
+<ul class='links'>
+<li><a href="/faq">FAQ</a></li>
+</ul>
+
+</p>
+</div>
+</div>
+</div>
+<script src="js/teuxdeux.js" type="text/javascript"></script>
+
+<div id='feedback_nib'></div>
+</body>
+</html>

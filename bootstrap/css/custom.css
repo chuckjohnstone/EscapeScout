@@ -3,5 +3,15 @@
 	margin-left: center;
 	font-weight: bold;
 	color: white;
+}  
+
+body { 
+  background-image:url('paper.png'); 
+  background-size:cover;
+  background-repeat:no-repeat; 
 }
-	
+
+.signup {
+   margin-top: 200px;
+   margin-left: 300px;
+}
