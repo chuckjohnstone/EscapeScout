@@ -11,13 +11,37 @@
 	text-align:center;
 }
 
+.add_idea {
+}
+
 .add_idea button {
 	margin-bottom:10px;
 }
 
-.votes, .vote {
+
+
+.idea_description, .votes, .vote {
  display:inline-block;
+ padding:5px;
 }
+
 .vote {
  vertical-align:middle;   
+ }
+
+.votesBox {
+  display:inline;
+  padding:40px;
+}
+
+.add_comment {
+  padding:20px;
+}
+
+.add_comment button {
+	margin-bottom:10px;
+}
+
+.lodging_description, .votes, .vote {
+	display:inline-block;
 }
