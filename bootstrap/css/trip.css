@@ -11,18 +11,21 @@
 	text-align:center;
 }
 
-.add_idea {
+.profile_picture, .add_idea {
+	display:inline-block;
+}
+
+.profile_picture, .add_comment {
+	display:inline-block;
 }
 
 .add_idea button {
 	margin-bottom:10px;
 }
 
-
-
-.idea_description, .votes, .vote {
+.profile_picture, .idea_description, .votes, .vote {
  display:inline-block;
- padding:5px;
+ padding:0px;
 }
 
 .vote {
@@ -34,8 +37,13 @@
   padding:40px;
 }
 
+.new_comments {
+	padding-top:20px;
+	padding-left:10px;
+}
+
 .add_comment {
-  padding:20px;
+  padding:0px;
 }
 
 .add_comment button {
