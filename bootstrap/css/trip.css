@@ -1,0 +1,23 @@
+.days {
+	margin-top:150px;
+	margin-left:200px;
+}
+
+.date {
+	text-align:center;
+}
+
+.location {
+	text-align:center;
+}
+
+.add_idea button {
+	margin-bottom:10px;
+}
+
+.votes, .vote {
+ display:inline-block;
+}
+.vote {
+ vertical-align:middle;   
+}
