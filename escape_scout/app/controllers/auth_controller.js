@@ -5,6 +5,7 @@ var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
 var db = new EscapeDB();
+var fs = require('fs');
 
 passport.serializeUser(function(user, done) {
   done(null, user._id);
@@ -32,9 +33,11 @@ passport.use(new FacebookStrategy({
 	        } else {
 	          var newUser = new db.User();
 	          newUser.fbId = profile.id;
+			  newUser.username = profile.username;
 	          newUser.firstName = profile.name.givenName;
 			  newUser.lastName = profile.name.familyName;
 	          newUser.email = profile.emails[0].value;
+			  newUser.picture = "http://graph.facebook.com/"+ profile.username +"/picture";
 
 	          newUser.save(function(err) {
 	            if(err) {throw err;}

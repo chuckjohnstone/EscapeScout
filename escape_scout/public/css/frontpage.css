@@ -1,0 +1,19 @@
+body { 
+  background-image:url('luggage.jpeg'); 
+  background-size:cover;
+  background-repeat:no-repeat; 
+}
+
+.signup {
+   	margin-top: 50px;
+	margin-right: 350px;
+	font-weight: bold;
+	color: white;
+}
+
+.tagline {
+   	margin-top: 84px;
+	margin-left: center;
+	font-weight: bold;
+	color: white;
+}

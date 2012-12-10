@@ -1,0 +1,55 @@
+.days {
+	margin-top:150px;
+	margin-left:200px;
+}
+
+.date {
+	text-align:center;
+}
+
+.location {
+	text-align:center;
+}
+
+.profile_picture, .add_idea {
+	display:inline-block;
+}
+
+.profile_picture, .add_comment {
+	display:inline-block;
+}
+
+.add_idea button {
+	margin-bottom:10px;
+}
+
+.profile_picture, .idea_description, .votes, .vote {
+ display:inline-block;
+ padding:0px;
+}
+
+.vote {
+ vertical-align:middle;   
+ }
+
+.votesBox {
+  display:inline;
+  padding:40px;
+}
+
+.new_comments {
+	padding-top:20px;
+	padding-left:10px;
+}
+
+.add_comment {
+  padding:0px;
+}
+
+.add_comment button {
+	margin-bottom:10px;
+}
+
+.lodging_description, .votes, .vote {
+	display:inline-block;
+}

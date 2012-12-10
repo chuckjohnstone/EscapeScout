@@ -10,4 +10,8 @@ module.exports = function routes() {
   this.match('auth/facebook/callback', { controller: 'auth', action: 'fbCallback' });
   this.match('auth/facebook', { controller: 'auth', action: 'facebook' });
 
+	this.resources('trips', function() {
+	  this.resources('days');
+	});
+
 }

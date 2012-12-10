@@ -9,6 +9,8 @@ module.exports = function(){
 
 	var User = new Schema({
 		fbId : {type: String, required: true},
+		picture: { type: String},
+		username: {type: String},
 		firstName : {type: String},
 		lastName : {type: String},
 		email : {type: String}
@@ -23,14 +25,21 @@ module.exports = function(){
 	var Idea = new Schema({
 		owner : { type: Schema.Types.ObjectId, required: true},
 		text : {type: String, required: true},
+		type: {type: String},
 		comments : [Comment]
+	});
+	
+	var Day = new Schema({
+		trip: {type: Schema.Types.ObjectId, requred: true},
+		day: {type: Date, required: true},
+		place: {type: String, required: true},
+		ideas: [Idea]
 	});
 
 	var Trip = new Schema({
 	    owner : { type: Schema.Types.ObjectId, required: true},
-	    days  : { type: Number, required: true},
+	    days  : [Day],
 		startDate  : { type: Date, required: true},
-		ideas : [Idea]
 	});
 
 	this.User = mongoose.model('User', User);
