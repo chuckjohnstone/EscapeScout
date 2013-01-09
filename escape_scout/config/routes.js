@@ -6,9 +6,12 @@
 // Guide on [routing](http://locomotivejs.org/guide/routing.html) for additional
 // information.
 module.exports = function routes() {
-  this.root('pages#main');
-  this.match('auth/facebook/callback', { controller: 'auth', action: 'fbCallback' });
-  this.match('auth/facebook', { controller: 'auth', action: 'facebook' });
+	this.root('pages#main');
+	this.match('auth/facebook/callback', { controller: 'auth', action: 'fbCallback' });
+	this.match('auth/facebook', { controller: 'auth', action: 'facebook' });
+
+
+	this.resources('trips');
 
 	this.resources('trips', function() {
 	  this.resources('days');

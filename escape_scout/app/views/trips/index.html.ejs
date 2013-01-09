@@ -1,2 +1,22 @@
 <% include ../includes/header %>
-<p>This is the trip controller.</p>
+<div class="container">
+
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="hero-unit" style="margin-top:60px;background-color:white">
+    <h2>Welcome Aboard! Let's Get Started...</h2>
+    <p>Just let us know where you're headed, and how long you plan to stay. We'll take it from there
+    and let your friends help you do all the heavy lifting.</p>
+
+    <form action="trips" method="POST">
+        <input type="text" name="place" class="large-input" placeholder="Where are you going?" />
+        <br />
+        <input type="text" name="days" class="large-input" placeholder="How long are you staying?" />
+        <br />
+        <p><button type="submit" class="btn btn-success btn-large">Let's Go!</a></p>
+    </form>
+
+
+    
+  </div>
+
+</div>
