@@ -10,7 +10,9 @@
     <form action="trips" method="POST">
         <input type="text" name="place" class="large-input" placeholder="Where are you going?" />
         <br />
-        <input type="text" name="days" class="large-input" placeholder="How long are you staying?" />
+        <input type="text" name="days" class="large-input" placeholder="How many days are you staying?" />
+        <br />
+        <input id="date" type="text" name="date" class="large-input" placeholder="When are you leaving?" />
         <br />
         <p><button type="submit" class="btn btn-success btn-large">Let's Go!</a></p>
     </form>
@@ -20,3 +22,6 @@
   </div>
 
 </div>
+<script type="text/javascript">
+	$("#date").datepicker();
+</script>

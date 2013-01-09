@@ -44,6 +44,9 @@ module.exports = function(){
 
 	this.User = mongoose.model('User', User);
 	this.Trip = mongoose.model('Trip', Trip);
+	this.Day = mongoose.model('Day', Day);
+	this.Idea = mongoose.model('Idea', Idea);
+	this.Comment = mongoose.model('Comment', Comment);
 
 	}
 
