@@ -42,6 +42,10 @@ module.exports = function() {
   this.use(express.static(__dirname + '/../../public'));
   this.use(express.bodyParser());
   this.use(express.methodOverride());
+  this.use(express.cookieParser());
+  this.use(express.session({
+    secret: "ALL YOUR TRIPS ARE BELONG TO US!"
+  }));
   this.use(passport.initialize());
   this.use(passport.session());
   this.use(this.router);

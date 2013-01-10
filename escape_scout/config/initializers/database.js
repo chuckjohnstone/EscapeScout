@@ -6,6 +6,8 @@ module.exports = function(){
 	EscapeDB = function(){
 
 	var Schema = mongoose.Schema;
+	this.Types = mongoose.Types;
+
 
 	var User = new Schema({
 		fbId : {type: String, required: true},
@@ -30,8 +32,9 @@ module.exports = function(){
 	});
 	
 	var Day = new Schema({
-		trip: {type: Schema.Types.ObjectId, requred: true},
-		day: {type: Date, required: true},
+		owner : { type: Schema.Types.ObjectId, required: true},
+		day: {type: Number, required: true},
+		date: {type: Date, required: true},
 		place: {type: String, required: true},
 		ideas: [Idea]
 	});

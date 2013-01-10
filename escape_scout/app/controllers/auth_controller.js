@@ -8,14 +8,10 @@ var db = new EscapeDB();
 var fs = require('fs');
 
 passport.serializeUser(function(user, done) {
+	console.log("SERIALIZE", user._id)
   done(null, user._id);
 });
 
-passport.deserializeUser(function(id, done) {
-  db.User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 passport.use(new FacebookStrategy({
     clientID: "392465224163061",
