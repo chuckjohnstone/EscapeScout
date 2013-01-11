@@ -35,7 +35,7 @@ module.exports = function(){
 		owner : { type: Schema.Types.ObjectId, required: true},
 		day: {type: Number, required: true},
 		date: {type: Date, required: true},
-		place: {type: String, required: true},
+		location: {type: String, required: true},
 		ideas: [Idea]
 	});
 
@@ -43,6 +43,7 @@ module.exports = function(){
 	    owner : { type: Schema.Types.ObjectId, required: true},
 	    days  : [Day],
 		startDate  : { type: Date, required: true},
+		place: {type: String, required: true},
 	});
 
 	this.User = mongoose.model('User', User);

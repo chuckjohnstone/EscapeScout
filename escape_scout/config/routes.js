@@ -17,4 +17,6 @@ module.exports = function routes() {
 	  this.resources('days');
 	});
 
+	this.match('trips/:id/:day', { controller: 'trips', action: 'showDay' });
+
 }
