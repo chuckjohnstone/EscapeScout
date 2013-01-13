@@ -54,7 +54,7 @@ AuthController.facebook = function() {
 }
 
 AuthController.fbCallback = function(){
-	passport.authenticate('facebook', { successRedirect: '/',
+	passport.authenticate('facebook', { successRedirect: '/agent',
 	                                      failureRedirect: '/login' })(this.__req, this.__res, this.__next);;
 }
 

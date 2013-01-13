@@ -1,0 +1,24 @@
+<% include ../includes/header %>
+<div class="container">
+
+  <div class="hero-unit" style="margin-top:60px;background-color:white">
+    <h2>Travel Agent</h2>
+    <p class="lead">This is your personal travel agent. This is the place where you manage your trips. From time to time, your
+        travel agent will have travel recommendations based on the things that like.</p>
+    <hr />
+    <% if (false == true){ %>
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Your Travel Agent recommends staying at the Holiday Inn while in Atlanta for $60 a night!
+    </div>
+    <% } %>
+    <div class="trips">
+        <% trips.forEach(function(trip) { %>
+        <p class="lead"><a href="/trips/<%=trip._id%>/1"><%=trip.place%> on <%=trip.adjustedDate%></a></p>
+        <% }); %>
+    </div>
+    <a class="btn btn-primary pull-right" href="/trips">Plan a New Trip</a>
+
+
+    
+  </div>

@@ -2,38 +2,113 @@
 <div class="container">
 
   <div class="hero-unit" style="margin-top:60px;background-color:white">
-    <h2 style="float:left"><%=user.firstName %>'s Trip to <%=trip.place %></h2>
+    <h2 style="float:left"><%=(user.firstName.substring(user.firstName.length-1) == "s") ? user.firstName + "'" : user.firstName + "'s" %> Trip to <%=trip.place %></h2>
     <div style="float:right;margin-top:20px">
         <% if (day.day > 1) { %>
         <a style="margin-bottom:4px" class="btn btn-mini" href="/trips/<%=trip._id%>/<%=day.day - 1%>"><i class="icon-arrow-left"></i></a>
         <% } %>
-        <span><%=day.adjustedDate %></span>
-        <% if (day.day < trip.days.length - 1) { %>
+        <span><%=day.adjustedDate %> (day <%=day.day%>)</span>
+        <% if (day.day < trip.days.length) { %>
         <a style="margin-bottom:4px" class="btn btn-mini" href="/trips/<%=trip._id%>/<%=day.day + 1%>"><i class="icon-arrow-right"></i></a>
         <% } %>
     </div>
     <hr style="clear:both" />
     <div class="ideas">
-        <p class="lead">You should go check out this super awesome place!</p>
-        <div style="margin-left:50px" class="comments">
-            <p><img src="<%=user.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>This is a comment.</span></p>
-            <p><img src="http://graph.facebook.com/chuckjohnstone/picture" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>This is another one!</span></p>
-        </div>
-         <p class="lead">You should go check out this super awesome place!</p>
-        <div style="margin-left:50px" class="comments">
-            <p><img src="<%=user.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>This is a comment.</span></p>
-            <p><img src="http://graph.facebook.com/chuckjohnstone/picture" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>This is another one!</span></p>
-        </div>
-         <p class="lead">You should go check out this super awesome place!</p>
-        <div style="margin-left:50px" class="comments">
-            <p><img src="<%=user.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>This is a comment.</span></p>
-            <p><img src="http://graph.facebook.com/chuckjohnstone/picture" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>This is another one!</span></p>
+        <div class="title">
+            <a href="#addIdea" class="add pull-left" data-toggle="modal"><i class="icon-plus"></i> new idea</a>
+            <p class="pull-right">What are you doing?<p>
+        </div>    
+        <div style="clear:both">
+            <% if (day.ideas.length == 0) { %>
+            <p class="lead">The wheels are still spinning for this trip. Why not add an idea?</p>
+            <% } %>
+            <% day.ideas.forEach(function(idea) { 
+                if (idea.type == "general"){ %>   
+                    <p class="lead idea pull-left"><%=idea.text%></p>
+                    <div class="pull-right">
+                        <span class="label label-inverse"><%=idea.comments.length%> Comments</span>
+                    </div>
+                     <div style="margin-left:50px;clear:both" class="comments">
+                    <% if (idea.comments.length == 0) { %>
+                        <p>Have something to say about this idea? Let's hear it!</p>
+                    <% } %>
+                    <% idea.comments.forEach(function(comment) { %>
+                    <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span><%=comment.text%></span></p>
+                    <% });%>
+                  
+                <br />
+                <div class="form-actions">
+                    <form action="/trips/<%=trip._id%>/<%=day._id%>/<%=idea._id%>" method="POST">    
+                        <input name="comment" placeholder="Enter your comment..." class="span8" type="text">
+                        <button type="submit" style="margin-bottom: 10px;" class="btn btn-success help-inline" type="button">Save</button>
+                    </form>    
+                </div>
+            </div>
+            <% } %>  
+            <% }); %>
         </div>
     </div>
-
-
-
-    
+    <br />
+    <hr />
+    <div class="accommodations">
+        <div class="title">
+            <p class="pull-right">Where are you staying?<p>
+        </div> 
+        <div style="clear:both">
+            <% day.ideas.forEach(function(idea) { 
+                    if (idea.type == "accommodation"){ %>   
+                    <p class="lead idea pull-left"><%=idea.text%></p>
+                    <div class="pull-right">
+                        <span class="label label-inverse"><%=idea.comments.length%> Comments</span>
+                    </div>
+                     <div style="margin-left:50px;clear:both" class="comments">
+                    <% if (idea.comments.length == 0) { %>
+                        <p>Have something to say about this idea? Let's hear it!</p>
+                    <% } %>
+                    <% idea.comments.forEach(function(comment) { %>
+                    <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span><%=comment.text%></span></p>
+                    <% });%>
+                 
+                <br />
+                <div class="form-actions">
+                    <form action="/trips/<%=trip._id%>/<%=day._id%>/<%=idea._id%>" method="POST">    
+                        <input name="comment" placeholder="Enter your comment..." class="span8" type="text">
+                        <button type="submit" style="margin-bottom: 10px;" class="btn btn-success help-inline" type="button">Save</button>
+                    </form>    
+                </div>
+            </div>
+            <% } %>   
+            <% }); %>
+        </div>
+    </div>
   </div>
 
 </div>
+
+<div id="addIdea" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>What's your idea?</h3>
+  </div>
+  <div class="modal-body">
+    <form action="/trips/<%=trip._id%>/<%=day._id%>" method="POST">
+        <input placeholder="Your super amazing idea..." style="width:95%" type="text" name="idea" />
+        <select placeholder="What kind of idea is it?" style="width:98%" name="type">
+            <option value="general">General</option>
+            <option value="accommodation">Accommodation</option>
+        </select>    
+        <div class="modal-footer">
+            <button type="submit" href="#" class="btn btn-success">Post Idea</a>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".idea").click(function(){
+            console.log($(this).find(".comments"));
+            $(this).parent().find('.comments').slideToggle();
+        });
+        $('.comments').hide();
+    });
+</script>

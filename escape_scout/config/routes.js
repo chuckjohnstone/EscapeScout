@@ -12,11 +12,12 @@ module.exports = function routes() {
 
 
 	this.resources('trips');
+	this.resources('agent');
 
-	this.resources('trips', function() {
-	  this.resources('days');
-	});
+	
 
 	this.match('trips/:id/:day', { controller: 'trips', action: 'showDay' });
+	this.match('trips/:id/:day', {controller: 'trips', action: 'idea', via: "POST"});
+	this.match('trips/:id/:day/:idea', {controller: 'trips', action: 'comment', via: "POST"});
 
 }

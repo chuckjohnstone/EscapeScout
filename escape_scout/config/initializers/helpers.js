@@ -64,6 +64,7 @@ module.exports = function(){
 		      f,
 		      formatChr = /\\?([a-z])/gi,
 		      formatChrCb,
+		      txt_ordin = {1:"st",2:"nd",3:"rd",21:"st",22:"nd",23:"rd",31:"st"};
 		      // Keep this here (works, but for code commented-out
 		      // below for file size reasons)
 		      //, tal= [],
@@ -93,8 +94,7 @@ module.exports = function(){
 		      return f.w() || 7;
 		    },
 		    S: function () { // Ordinal suffix for day of month; st, nd, rd, th
-		      var j = f.j();
-		      return j < 4 | j > 20 && (['st', 'nd', 'rd'][j % 10 - 1] || 'th');
+		      return txt_ordin[f.j()] ? txt_ordin[f.j()] : 'th';
 		    },
 		    w: function () { // Day of week; 0[Sun]..6[Sat]
 		      return jsdate.getDay();

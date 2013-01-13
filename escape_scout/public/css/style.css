@@ -57,3 +57,17 @@
 	padding: 10px !important;
 	width: 500px;
 }
+
+.title {
+	font-size: 28px;
+	color: #E4E4E4;
+	text-align: right;
+}
+
+.details {
+	clear:both;
+}
+
+.add {
+	font-size:16px;
+}
