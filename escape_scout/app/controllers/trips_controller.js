@@ -8,7 +8,7 @@ var passport = require('passport');
 
 passport.deserializeUser(function(id, done) {
 	console.log("FIND", id)
-  db.User.findOne(id, function(err, user) {
+  db.User.findById(id, function(err, user) {
     done(err, user);
   });
 });
@@ -32,7 +32,7 @@ TripsController.create = function() {
 	var owner = db.Types.ObjectId(this.req.user._id.toString())
 
 	var trip = new db.Trip({
-		owner: owner,
+		owner: this.req.user,
 		startDate: this.date,
 		place: this.param('place')
 	});

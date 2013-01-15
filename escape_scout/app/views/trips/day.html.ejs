@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="hero-unit" style="margin-top:60px;background-color:white">
-    <h2 style="float:left"><%=(user.firstName.substring(user.firstName.length-1) == "s") ? user.firstName + "'" : user.firstName + "'s" %> Trip to <%=trip.place %></h2>
+    <h2 style="float:left"><%=(trip.owner.firstName.substring(trip.owner.firstName.length-1) == "s") ? trip.owner.firstName + "'" : trip.owner.firstName + "'s" %> Trip to <%=trip.place %></h2>
     <div style="float:right;margin-top:20px">
         <% if (day.day > 1) { %>
         <a style="margin-bottom:4px" class="btn btn-mini" href="/trips/<%=trip._id%>/<%=day.day - 1%>"><i class="icon-arrow-left"></i></a>
@@ -33,7 +33,8 @@
                         <p>Have something to say about this idea? Let's hear it!</p>
                     <% } %>
                     <% idea.comments.forEach(function(comment) { %>
-                    <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span><%=comment.text%></span></p>
+                    <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>
+                        <strong><%=comment.owner.firstName + " " + comment.owner.lastName%>: </strong><%=comment.text%></span></p>
                     <% });%>
                   
                 <br />

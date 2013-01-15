@@ -8,7 +8,7 @@ var passport = require('passport');
 
 passport.deserializeUser(function(id, done) {
 	console.log("FIND", id)
-  db.User.findOne(id, function(err, user) {
+  db.User.findById(id, function(err, user) {
     done(err, user);
   });
 });
@@ -19,7 +19,7 @@ AgentController.index = function() {
     	return this.res.redirect("/");
 
     var self = this;
-	db.Trip.find({owner: this.req.user._id}, function (err, trips){
+	db.Trip.find({'owner._id': this.req.user._id}, function (err, trips){
 		self.trips = trips;
 		for (var i=0;i<self.trips.length;i++){
 			self.trips[i].adjustedDate = h.date("F jS", self.trips[i].startDate)

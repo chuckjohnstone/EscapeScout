@@ -48,7 +48,7 @@ module.exports = function(){
 	});
 
 	var Trip = new Schema({
-	    owner : { type: Schema.Types.ObjectId, required: true},
+	    owner : { type: Schema.Types.Mixed, required: true},
 	    days  : [{ type: Schema.Types.ObjectId, ref: 'Day' }],
 		startDate  : { type: Date, required: true},
 		place: {type: String, required: true},
