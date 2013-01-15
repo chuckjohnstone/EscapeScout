@@ -15,12 +15,12 @@
     <hr style="clear:both" />
     <div class="ideas">
         <div class="title">
-            <a href="#addIdea" class="add pull-left" data-toggle="modal"><i class="icon-plus"></i> new idea</a>
-            <p class="pull-right">What are you doing?<p>
+            <a href="#addIdea" class="add pull-left" data-toggle="modal"><i class="icon-plus"></i> Add a new idea</a>
+            <p class="pull-right">Plans and ideas.<p>
         </div>    
         <div style="clear:both">
             <% if (day.ideas.length == 0) { %>
-            <p class="lead">The wheels are still spinning for this trip. Why not add an idea?</p>
+            <p class="lead">So many options! Why not add an idea like where to eat and what to do?</p>
             <% } %>
             <% day.ideas.forEach(function(idea) { 
                 if (idea.type == "general"){ %>   
@@ -52,7 +52,7 @@
     <hr />
     <div class="accommodations">
         <div class="title">
-            <p class="pull-right">Where are you staying?<p>
+            <p class="pull-right">Where I'm staying.<p>
         </div> 
         <div style="clear:both">
             <% day.ideas.forEach(function(idea) { 
@@ -92,7 +92,7 @@
   </div>
   <div class="modal-body">
     <form action="/trips/<%=trip._id%>/<%=day._id%>" method="POST">
-        <input placeholder="Your super amazing idea..." style="width:95%" type="text" name="idea" />
+        <input placeholder="Your super amazing idea for what to do is..." style="width:95%" type="text" name="idea" />
         <select placeholder="What kind of idea is it?" style="width:98%" name="type">
             <option value="general">General</option>
             <option value="accommodation">Accommodation</option>
