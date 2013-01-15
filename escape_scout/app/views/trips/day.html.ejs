@@ -23,7 +23,8 @@
             <p class="lead">So many options! Why not add an idea like where to eat and what to do?</p>
             <% } %>
             <% day.ideas.forEach(function(idea) { 
-                if (idea.type == "general"){ %>   
+                if (idea.type == "general"){ %> 
+                <div>  
                     <p class="lead idea pull-left"><%=idea.text%></p>
                     <div class="pull-right">
                         <span class="label label-inverse"><%=idea.comments.length%> Comments</span>
@@ -45,6 +46,8 @@
                     </form>    
                 </div>
             </div>
+            </div>
+            <div style="clear:both"></div>
             <% } %>  
             <% }); %>
         </div>
@@ -56,8 +59,12 @@
             <p class="pull-right">Where I'm staying.<p>
         </div> 
         <div style="clear:both">
+            <% if (day.ideas.length == 0) { %>
+            <p class="lead">So many options! Why not add an idea like where to eat and what to do?</p>
+            <% } %>
             <% day.ideas.forEach(function(idea) { 
-                    if (idea.type == "accommodation"){ %>   
+                if (idea.type == "accommodation"){ %> 
+                <div>  
                     <p class="lead idea pull-left"><%=idea.text%></p>
                     <div class="pull-right">
                         <span class="label label-inverse"><%=idea.comments.length%> Comments</span>
@@ -67,9 +74,10 @@
                         <p>Have something to say about this idea? Let's hear it!</p>
                     <% } %>
                     <% idea.comments.forEach(function(comment) { %>
-                    <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span><%=comment.text%></span></p>
+                    <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>
+                        <strong><%=comment.owner.firstName + " " + comment.owner.lastName%>: </strong><%=comment.text%></span></p>
                     <% });%>
-                 
+                  
                 <br />
                 <div class="form-actions">
                     <form action="/trips/<%=trip._id%>/<%=day._id%>/<%=idea._id%>" method="POST">    
@@ -78,7 +86,9 @@
                     </form>    
                 </div>
             </div>
-            <% } %>   
+            </div>
+            <div style="clear:both"></div>
+            <% } %>  
             <% }); %>
         </div>
     </div>
