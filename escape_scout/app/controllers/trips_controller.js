@@ -64,12 +64,14 @@ TripsController.showDay = function() {
 
 	db.Trip.findById(this.param('id')).populate('days').exec(function (err, trip){
 		self.trip = trip;
+		/*
 		if (trip.owner._id == this.user._id){
 			self.trip.isOwner = true;
 		}
 		else {
 			self.trip.isOwner = false;
 		}
+		*/
 		self.day = self.trip.days[parseInt(self.param('day')) - 1];
 		self.day.adjustedDate = h.date('l, M j', self.day.date);
 		self.render('day');
