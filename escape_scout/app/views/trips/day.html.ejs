@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="hero-unit" style="margin-top:60px;background-color:white">  
-    <h2 style="float:left;font-size: 28px;"><%=(trip.owner.firstName.substring(trip.owner.firstName.length-1) == "s") ? trip.owner.firstName + "'" : trip.owner.firstName + "'s" %> Trip to <%=trip.place %></h2>
+    <h2 style="margin-left:250px;float:left;font-size: 26px;"><%=(trip.owner.firstName.substring(trip.owner.firstName.length-1) == "s") ? trip.owner.firstName + "'" : trip.owner.firstName + "'s" %> Trip to <%=trip.place %></h2>
     <div style="clear:both;"></div>
     <div style="margin-top:5px;">
         <div class="pull-left">
@@ -21,10 +21,10 @@
     <hr style="clear:both" />
     <div class="ideas">
         <div class="title">
-            <a href="#addIdea" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="right" title="Add Idea"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
-            <p class="pull-right">Plans and ideas.<p>
+            <a href="#addIdea" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="left" title="Add Idea"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
+            <p class="pull-left">What I'm doing or should do.<p>
         </div>    
-        <div style="clear:both">
+        <div style="margin-left:45px;clear:both" class="ideas">
             <% if (day.ideas.length == 0) { %>
             <p class="lead">So many options! Why not add an idea like where to eat and what to do?</p>
             <% } %>
@@ -62,9 +62,9 @@
     <hr />
     <div class="accommodations">
         <div class="title">
-            <p class="pull-right">Where I'm staying.<p>
+            <p class="pull-left">Where I'm staying or should stay.<p>
         </div> 
-        <div style="clear:both">
+        <div style="margin-left:45px;clear:both" class="ideas">
             <% if (day.ideas.length == 0) { %>
             <p class="lead">So many options! Why not add an idea like where to eat and what to do?</p>
             <% } %>
