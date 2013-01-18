@@ -13,7 +13,6 @@
 
 .signup-box{
 	color:white;
-	font-family: 'Fenix', serif;
 	margin-top:20%;
 	text-align:center;
 }
@@ -23,14 +22,21 @@
 	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
              0px 8px 13px rgba(0,0,0,0.1),
              0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Ultra', serif;
 }
 
 .signup-box p {
 	margin-top:30px;
-	font-size:30px;
+	font-size:34px;
 	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
              0px 8px 13px rgba(0,0,0,0.1),
              0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Raleway', sans-serif;
+}
+
+.signup-box a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
 }
 
 .loginBtn {
@@ -81,11 +87,89 @@
 }
 
 .add {
-	font-size:16px;
+	font-size: 16px;
+    background-color: #49afcd;
+    color: white;
+    border-radius: 15px;
+    width: 30px;
+    border: 1px solid rgb(0, 141, 182);
+}
+
+.add:hover {
+    background-color: #2f96b4;
 }
 
 .share {
-	margin-top: -55px;
-	margin-right: -50px;
+	margin-bottom:5px;
 }
+
+h1, h2, h3, h4 {
+    font-family: 'Fjalla One', serif;
+    line-height: 20px !important;
 }
+
+p {
+    font-family: 'Raleway', serif;
+}
+/* ---------- FONTS -------------*/
+
+@font-face {
+    font-family: 'ColaborateThinRegular';
+    src: url('../fonts/ColabThi-webfont.eot');
+    src: url('../fonts/ColabThi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ColabThi-webfont.woff') format('woff'),
+         url('../fonts/ColabThi-webfont.ttf') format('truetype'),
+         url('../fonts/ColabThi-webfont.svg#ColaborateThinRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ColaborateLightRegular';
+    src: url('ColabLig-webfont.eot');
+    src: url('ColabLig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('ColabLig-webfont.woff') format('woff'),
+         url('ColabLig-webfont.ttf') format('truetype'),
+         url('ColabLig-webfont.svg#ColaborateLightRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ColaborateRegular';
+    src: url('ColabReg-webfont.eot');
+    src: url('ColabReg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('ColabReg-webfont.woff') format('woff'),
+         url('ColabReg-webfont.ttf') format('truetype'),
+         url('ColabReg-webfont.svg#ColaborateRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ColaborateMediumRegular';
+    src: url('ColabMed-webfont.eot');
+    src: url('ColabMed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('ColabMed-webfont.woff') format('woff'),
+         url('ColabMed-webfont.ttf') format('truetype'),
+         url('ColabMed-webfont.svg#ColaborateMediumRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ColaborateBoldRegular';
+    src: url('ColabBol-webfont.eot');
+    src: url('ColabBol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('ColabBol-webfont.woff') format('woff'),
+         url('ColabBol-webfont.ttf') format('truetype'),
+         url('ColabBol-webfont.svg#ColaborateBoldRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

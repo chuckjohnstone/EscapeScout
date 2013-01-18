@@ -5077,6 +5077,7 @@ input[type="submit"].btn.btn-mini {
   opacity: 0;
   filter: alpha(opacity=0);
   visibility: visible;
+  line-height: 20px;
 }
 
 .tooltip.in {

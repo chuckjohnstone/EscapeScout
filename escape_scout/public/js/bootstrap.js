@@ -28,6 +28,8 @@
 
   $(function () {
 
+    $("[rel='tooltip']").tooltip();
+
     $.support.transition = (function () {
 
       var transitionEnd = (function () {

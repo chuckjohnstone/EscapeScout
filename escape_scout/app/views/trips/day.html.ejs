@@ -1,24 +1,27 @@
 <% include ../includes/header %>
 <div class="container">
 
-  <div class="hero-unit" style="margin-top:60px;background-color:white">
-    <div class="share pull-right">
-        <a class="lead" data-toggle="modal" href="#shareModal">Share Your Trip</a>
-    </div>   
-    <h2 style="float:left"><%=(trip.owner.firstName.substring(trip.owner.firstName.length-1) == "s") ? trip.owner.firstName + "'" : trip.owner.firstName + "'s" %> Trip to <%=trip.place %></h2>
-    <div style="float:right;margin-top:20px">
-        <% if (day.day > 1) { %>
-        <a style="margin-bottom:4px" class="btn btn-mini" href="/trips/<%=trip._id%>/<%=day.day - 1%>"><i class="icon-arrow-left"></i></a>
-        <% } %>
-        <span><%=day.adjustedDate %> (day <%=day.day%>)</span>
-        <% if (day.day < trip.days.length) { %>
-        <a style="margin-bottom:4px" class="btn btn-mini" href="/trips/<%=trip._id%>/<%=day.day + 1%>"><i class="icon-arrow-right"></i></a>
-        <% } %>
-    </div>
+  <div class="hero-unit" style="margin-top:60px;background-color:white">  
+    <h2 style="float:left;font-size: 28px;"><%=(trip.owner.firstName.substring(trip.owner.firstName.length-1) == "s") ? trip.owner.firstName + "'" : trip.owner.firstName + "'s" %> Trip to <%=trip.place %></h2>
+    <div style="clear:both;"></div>
+    <div style="margin-top:5px;">
+        <div class="pull-left">
+            <% if (day.day > 1) { %>
+            <a style="margin-bottom:4px" class="btn btn-mini" href="/trips/<%=trip._id%>/<%=day.day - 1%>"><i class="icon-arrow-left"></i></a>
+            <% } %>
+            <span><%=day.adjustedDate %> (day <%=day.day%>)</span>
+            <% if (day.day < trip.days.length) { %>
+            <a style="margin-bottom:4px" class="btn btn-mini" href="/trips/<%=trip._id%>/<%=day.day + 1%>"><i class="icon-arrow-right"></i></a>
+            <% } %>
+        </div>
+        <div class="share pull-right">
+            <a class="lead btn btn-info" data-toggle="modal" href="#shareModal">Share Your Trip</a>
+        </div>
+    </div> 
     <hr style="clear:both" />
     <div class="ideas">
         <div class="title">
-            <a href="#addIdea" class="add pull-left" data-toggle="modal"><i class="icon-plus"></i> Add a new idea</a>
+            <a href="#addIdea" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="right" title="Add Idea"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
             <p class="pull-right">Plans and ideas.<p>
         </div>    
         <div style="clear:both">
@@ -28,7 +31,7 @@
             <% day.ideas.forEach(function(idea) { 
                 if (idea.type == "general"){ %> 
                 <div>  
-                    <p class="lead idea pull-left"><%=idea.text%></p>
+                    <p class="lead idea pull-left" style="cursor:pointer;"><%=idea.text%></p>
                     <div class="pull-right">
                         <span class="label label-inverse"><%=idea.comments.length%> Comments</span>
                     </div>

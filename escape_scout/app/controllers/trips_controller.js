@@ -64,7 +64,7 @@ TripsController.showDay = function() {
 
 	db.Trip.findById(this.param('id')).populate('days').exec(function (err, trip){
 		self.trip = trip;
-		if (trip.owner._id == this.user._id){
+		if ("trip.owner._id" == self.user._id){
 			self.trip.isOwner = true;
 		}
 		else {
