@@ -26,11 +26,15 @@ TripsController.create = function() {
 		return this.res.redirect("/");
     }
 
+    var self = this;
+
 	this.place = this.param('place');
 	this.days = this.param('days');
 	this.date = new Date(this.param('date'));
 	
 	var owner = db.Types.ObjectId(this.req.user._id.toString())
+	var Bitly = require('bitly');
+	var bitly = new Bitly('chuckjohnstone', 'R_24b4e55ac0caa2828cc45d18fd35419e');
 
 	var trip = new db.Trip({
 		owner: this.req.user,
@@ -48,10 +52,19 @@ TripsController.create = function() {
 	}
 	trip.save();
 
+
+	//We need to offload this function and run it as a job after the trip is created. This is just temporary.
+	bitly.shorten('http://escapescout.com/trips/' + trip._id + "/1/", function(err, response) {
+  		if (err) throw err;
+
+  		console.log(response);
+  		trip.shortUrl = response.data.url;
+  		trip.save();
+  		return self.res.redirect('trips/' + trip._id + "/1");
+
+	});
+
 	
-
-
-	return this.res.redirect('trips/' + trip._id + "/1");
 
 }
 

@@ -52,6 +52,7 @@ module.exports = function(){
 	    days  : [{ type: Schema.Types.ObjectId, ref: 'Day' }],
 		startDate  : { type: Date, required: true},
 		place: {type: String, required: true},
+		shortUrl: {type: String}
 	});
 
 	this.User = mongoose.model('User', User);

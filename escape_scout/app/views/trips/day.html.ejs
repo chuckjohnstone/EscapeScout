@@ -126,7 +126,7 @@
     <h3>Need Some Help Planning Your Trip?</h3>
   </div>
   <div class="modal-body">
-    <input style="padding:5px;font-size:20px;width:90%" value="http://www.escapescout.com/trips/<%=trip._id%>/1" disabled/>
+    <input style="padding:5px;font-size:20px;width:90%" value="<%=trip.shortUrl%>" />
     <div style="margin-top:20px">
         <img src="/img/facebook.png" id="facebook" width="60" height="60" />
         <img src="/img/twitter.png" id="twitter" width="60" height="60" />
@@ -144,14 +144,14 @@
         $('.comments').hide();
 
         $("#facebook").click(function(){
-           window.open('https://www.facebook.com/dialog/feed?app_id=392465224163061&display=popup&link=http://www.escapescout.com/trips/<%=trip._id%>/1&name=Share your trip to <%=trip.place%>&description=Ask your friends for help planning your next adventure!&redirect_uri=http://www.escapescout.com/trips/<%=trip._id%>/1','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
+           window.open('https://www.facebook.com/dialog/feed?app_id=392465224163061&display=popup&link=<%=trip.shortUrl%>&name=Share your trip to <%=trip.place%>&description=Ask your friends for help planning your next adventure!&redirect_uri=http://www.escapescout.com/trips/<%=trip._id%>/1','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
         });
         $("#twitter").click(function(){
-            window.open('https://www.twitter.com/share?url=http://www.escapescout.com/trips/<%=trip._id%>/1&text=Help me plan my trip to <%=trip.place%>.','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
+            window.open('https://www.twitter.com/share?url=<%=trip.shortUrl%>&text=Help me plan my trip to <%=trip.place%>.','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
 
         });
         $("#google").click(function(){
-            window.open('https://plus.google.com/share?url=http://www.escapescout.com/trips/<%=trip._id%>/1&text="Help me plan my trip to <%=trip.place%>.','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
+            window.open('https://plus.google.com/share?url=<%=trip.shortUrl%>&text="Help me plan my trip to <%=trip.place%>.','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
         });
     });
 </script>
