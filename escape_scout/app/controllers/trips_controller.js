@@ -22,8 +22,10 @@ TripsController.index = function() {
 }
 
 TripsController.create = function() {
-	if (!this.req.isAuthenticated())
-    return this.res.redirect("/");
+	if (!this.req.isAuthenticated()){
+		this.req.session.redirectUrl = this.req.url;
+		return this.res.redirect("/");
+    }
 
 	this.place = this.param('place');
 	this.days = this.param('days');
@@ -55,8 +57,10 @@ TripsController.create = function() {
 }
 
 TripsController.showDay = function() {
-	if (!this.req.isAuthenticated())
-    return this.res.redirect("/");
+	if (!this.req.isAuthenticated()){
+		this.req.session.redirectUrl = this.req.url;
+		return this.res.redirect("/");
+    }
 
 
 	var self = this;

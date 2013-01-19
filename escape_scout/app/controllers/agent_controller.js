@@ -15,8 +15,10 @@ passport.deserializeUser(function(id, done) {
 
 AgentController.index = function() {
 
-	if (!this.req.isAuthenticated())
-    	return this.res.redirect("/");
+	if (!this.req.isAuthenticated()){
+		this.req.session.redirectUrl = this.req.url;
+		return this.res.redirect("/");
+    }
 
     var self = this;
 	db.Trip.find({'owner._id': this.req.user._id}, function (err, trips){
