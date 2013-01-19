@@ -153,6 +153,13 @@ p {
 .form-help li {
     list-style-type: none !important;
 }
+
+.alert-error {
+    color: rgb(255, 255, 255);
+    background-color: rgb(117, 35, 35);
+    border-color: rgb(112, 22, 22);
+    text-shadow:none;
+}
 /* ---------- FONTS -------------*/
 
 @font-face {

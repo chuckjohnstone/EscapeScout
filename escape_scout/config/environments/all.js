@@ -48,6 +48,7 @@ module.exports = function() {
   }));
   this.use(passport.initialize());
   this.use(passport.session());
+  this.use(require('connect-flash')());
   this.use(this.router);
 
 }

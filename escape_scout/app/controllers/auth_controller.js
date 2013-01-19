@@ -108,14 +108,16 @@ AuthController.fbCallback = function(){
 }
 
 AuthController.login = function() {
-	console.log("MESSAGE", message);
 	var self = this;
 	passport.authenticate('local', function(err, user, info){
 		// This is the default destination upon successful login.
 	    var redirectUrl = '/agent';
 
 	    if (err) { return self.next(err); }
-	    if (!user) { return self.res.redirect('/'); }
+	    if (!user) { 
+	    	self.req.flash('error', "The username or password was incorrect.");
+	    	return self.res.redirect('/'); 
+	    }
 
 	    // If we have previously stored a redirectUrl, use that, 
 	    // otherwise, use the default.
@@ -138,14 +140,14 @@ AuthController.register = function() {
 
 AuthController.create = function() {
 	var self = this;
-	
+
 	var user = new db.User({
-		firstName: self.param('firstName'),
-		lastName: self.param('lastName'),
-		username: self.param('email'),
-		email: self.param('email'),
+		firstName: this.param('firstName'),
+		lastName: this.param('lastName'),
+		username: this.param('email'),
+		email: this.param('email'),
 		picture: "/img/generic-user.png",
-		password: encodePassword(self.param('password'))
+		password: encodePassword(this.param('password'))
 	});
 
 	user.save();

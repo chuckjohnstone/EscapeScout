@@ -7,11 +7,19 @@
 					<br />
 					<br />
 					<center>
+						<% if (locals.error != ""){ %>
+						<div style="width:700px" class="alert alert-error">
+						  		<button type="button" class="close" data-dismiss="alert">&times;</button>
+						  		<%=error%>
+						</div>
+						<% } %>
 						<div class="login-box">
-							<input type="text" placeholder="Username" class="login-input"/>
-							<input type="text" placeholder="Password" class="login-input"/>
-							<a href="#" class="btn btn-info btn-large" style="padding: 6.8px 21px !important;
-								margin: 5px;">Login</a>
+							<form action="/auth/login" method="POST">
+								<input type="email" name="username" placeholder="Email Address" class="login-input" required/>
+								<input type="password" name="password" placeholder="Password" class="login-input" required/>
+								<button type="submit" class="btn btn-info btn-large" style="padding: 6.8px 21px !important;
+								margin: 5px;">Login</button>
+							</form>
 						</div>
 						<p class="small-p">or</p>
 					</center>

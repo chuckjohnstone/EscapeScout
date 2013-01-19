@@ -4,7 +4,7 @@ var locomotive = require('locomotive')
 var PagesController = new Controller();
 
 PagesController.main = function() {
-  this.render();
+  this.render({error: this.req.flash('error')});
 }
 
 module.exports = PagesController;

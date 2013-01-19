@@ -82,7 +82,8 @@ TripsController.showDay = function() {
 			self.owner = true;
 		}
 		self.day = self.trip.days[parseInt(self.param('day')) - 1];
-		self.day.adjustedDate = h.date('l, M j', self.day.date);
+		self.day.adjustedDate = h.date('l, M j', new Date(self.day.date).getTime());
+		console.log(self.day.adjustedDate);
 		self.render('day');
 	});
 
