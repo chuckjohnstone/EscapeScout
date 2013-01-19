@@ -69,9 +69,10 @@ TripsController.showDay = function() {
 	db.Trip.findById(this.param('id')).populate('days').exec(function (err, trip){
 		self.trip = trip;
 		if ("trip.owner._id" == self.user._id){
-		self.day = self.trip.days[parseInt(self.param('day')) - 1];
-		self.day.adjustedDate = h.date('l, M j', self.day.date);
-		self.render('day');
+			self.day = self.trip.days[parseInt(self.param('day')) - 1];
+			self.day.adjustedDate = h.date('l, M j', self.day.date);
+			self.render('day');
+		}
 	});
 
 }
