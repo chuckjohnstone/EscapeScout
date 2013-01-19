@@ -2,7 +2,9 @@
 <div class="container">
 
   <div class="hero-unit" style="margin-top:60px;background-color:white">  
-    <h2 style="margin-left:250px;float:left;font-size: 26px;"><%=(trip.owner.firstName.substring(trip.owner.firstName.length-1) == "s") ? trip.owner.firstName + "'" : trip.owner.firstName + "'s" %> Trip to <%=trip.place %></h2>
+    
+        <h2 style="font-size: 26px;margin-bottom:15px;"><%=(trip.owner.firstName.substring(trip.owner.firstName.length-1) == "s") ? trip.owner.firstName + "'" : trip.owner.firstName + "'s" %> Trip to <%=trip.place %></h2>
+
     <div style="clear:both;"></div>
     <div style="margin-top:5px;">
         <div class="pull-left">
