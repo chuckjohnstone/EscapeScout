@@ -22,8 +22,10 @@ TripsController.index = function() {
 }
 
 TripsController.create = function() {
-	if (!this.req.isAuthenticated())
-    return this.res.redirect("/");
+	if (!this.req.isAuthenticated()){
+		this.req.session.redirectUrl = this.req.url;
+		return this.res.redirect("/");
+    }
 
 	this.place = this.param('place');
 	this.days = this.param('days');
@@ -55,8 +57,10 @@ TripsController.create = function() {
 }
 
 TripsController.showDay = function() {
-	if (!this.req.isAuthenticated())
-    return this.res.redirect("/");
+	if (!this.req.isAuthenticated()){
+		this.req.session.redirectUrl = this.req.url;
+		return this.res.redirect("/");
+    }
 
 
 	var self = this;
@@ -65,11 +69,6 @@ TripsController.showDay = function() {
 	db.Trip.findById(this.param('id')).populate('days').exec(function (err, trip){
 		self.trip = trip;
 		if ("trip.owner._id" == self.user._id){
-			self.trip.isOwner = true;
-		}
-		else {
-			self.trip.isOwner = false;
-		}
 		self.day = self.trip.days[parseInt(self.param('day')) - 1];
 		self.day.adjustedDate = h.date('l, M j', self.day.date);
 		self.render('day');

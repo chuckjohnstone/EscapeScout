@@ -54,8 +54,26 @@ AuthController.facebook = function() {
 }
 
 AuthController.fbCallback = function(){
-	passport.authenticate('facebook', { successRedirect: '/agent',
-	                                      failureRedirect: '/login' })(this.__req, this.__res, this.__next);;
+	var self = this;
+	passport.authenticate('facebook', function(err, user, info){
+		// This is the default destination upon successful login.
+	    var redirectUrl = '/agent';
+
+	    if (err) { return self.next(err); }
+	    if (!user) { return self.res.redirect('/'); }
+
+	    // If we have previously stored a redirectUrl, use that, 
+	    // otherwise, use the default.
+	    if (self.req.session.redirectUrl) {
+	      redirectUrl = self.req.session.redirectUrl;
+	      self.req.session.redirectUrl = null;
+	    }
+	    self.req.logIn(user, function(err){
+	      if (err) { return self.next(err); }
+	    });
+	    self.res.redirect(redirectUrl);
+
+	})(this.__req, this.__res, this.__next);;
 }
 
 module.exports = AuthController;
