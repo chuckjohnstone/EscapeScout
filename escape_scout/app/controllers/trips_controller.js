@@ -7,7 +7,6 @@ var h = new Helpers();
 var passport = require('passport');
 
 passport.deserializeUser(function(id, done) {
-	console.log("FIND", id)
   db.User.findById(id, function(err, user) {
     done(err, user);
   });
@@ -61,18 +60,17 @@ TripsController.showDay = function() {
 		this.req.session.redirectUrl = this.req.url;
 		return this.res.redirect("/");
     }
-
-
 	var self = this;
 	this.user = this.req.user;
 
 	db.Trip.findById(this.param('id')).populate('days').exec(function (err, trip){
 		self.trip = trip;
 		if ("trip.owner._id" == self.user._id){
-			self.day = self.trip.days[parseInt(self.param('day')) - 1];
-			self.day.adjustedDate = h.date('l, M j', self.day.date);
-			self.render('day');
+			self.owner = true;
 		}
+		self.day = self.trip.days[parseInt(self.param('day')) - 1];
+		self.day.adjustedDate = h.date('l, M j', self.day.date);
+		self.render('day');
 	});
 
 }
