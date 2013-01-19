@@ -9,6 +9,10 @@ module.exports = function routes() {
 	this.root('pages#main');
 	this.match('auth/facebook/callback', { controller: 'auth', action: 'fbCallback' });
 	this.match('auth/facebook', { controller: 'auth', action: 'facebook' });
+	this.match('auth/register', {controller: 'auth', action: 'register'});
+	this.match('auth/create', {controller: 'auth', action: 'create', via: "POST"});
+	this.match('auth/login', {controller: 'auth', action:'login', via: 'POST'});
+
 
 
 	this.resources('trips');

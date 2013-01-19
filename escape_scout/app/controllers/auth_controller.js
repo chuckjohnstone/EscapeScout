@@ -2,10 +2,13 @@ var locomotive = require('locomotive')
   , Controller = locomotive.Controller;
 
 var passport = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
+  , FacebookStrategy = require('passport-facebook').Strategy
+  , LocalStrategy = require('passport-local').Strategy;
 
 var db = new EscapeDB();
 var fs = require('fs');
+
+var salt = "AbACabB";
 
 passport.serializeUser(function(user, done) {
 	console.log("SERIALIZE", user._id)
@@ -13,6 +16,17 @@ passport.serializeUser(function(user, done) {
 });
 
 
+//Helper Methods
+function encodePassword( pass ){
+	var crypto = require('crypto');
+	var shasum = crypto.createHash('sha1');
+	shasum.update(pass);
+
+	return shasum.digest('hex');
+}
+
+
+//Facebook Login
 passport.use(new FacebookStrategy({
     clientID: "392465224163061",
     clientSecret: "4b0d122cbeaa55e10d9c39a72d9f9835",
@@ -21,7 +35,6 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
    	process.nextTick(function () {
 	      var query = db.User.findOne({ 'fbId': profile.id });
-		  console.log(profile);
 	      query.exec(function (err, oldUser) {
 	        if(oldUser) {
 	          console.log('User: ' + oldUser.firstName + ' found and logged in!');
@@ -45,6 +58,24 @@ passport.use(new FacebookStrategy({
 	    });
   }
 ));
+
+//Local Login
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+  	var query = db.User.findOne({ username: username });
+    query.exec(function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'The username or password was incorrect.' });
+      }
+      if (encodePassword(password) != user.password) {
+        return done(null, false, { message: 'The username or password was incorrect.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
 
 var AuthController = new Controller();
 
@@ -73,7 +104,52 @@ AuthController.fbCallback = function(){
 	    });
 	    self.res.redirect(redirectUrl);
 
-	})(this.__req, this.__res, this.__next);;
+	})(this.__req, this.__res, this.__next);
 }
+
+AuthController.login = function() {
+	console.log("MESSAGE", message);
+	var self = this;
+	passport.authenticate('local', function(err, user, info){
+		// This is the default destination upon successful login.
+	    var redirectUrl = '/agent';
+
+	    if (err) { return self.next(err); }
+	    if (!user) { return self.res.redirect('/'); }
+
+	    // If we have previously stored a redirectUrl, use that, 
+	    // otherwise, use the default.
+	    if (self.req.session.redirectUrl) {
+	      redirectUrl = self.req.session.redirectUrl;
+	      self.req.session.redirectUrl = null;
+	    }
+	    self.req.logIn(user, function(err){
+	      if (err) { return self.next(err); }
+	    });
+	    self.res.redirect(redirectUrl);
+
+	})(this.__req, this.__res, this.__next);
+};
+
+
+AuthController.register = function() {
+	this.render();
+};
+
+AuthController.create = function() {
+	var self = this;
+	
+	var user = new db.User({
+		firstName: self.param('firstName'),
+		lastName: self.param('lastName'),
+		username: self.param('email'),
+		email: self.param('email'),
+		picture: "/img/generic-user.png",
+		password: encodePassword(self.param('password'))
+	});
+
+	user.save();
+	this.res.redirect("/");
+};
 
 module.exports = AuthController;

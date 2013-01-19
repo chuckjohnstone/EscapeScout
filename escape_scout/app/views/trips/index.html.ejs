@@ -8,11 +8,11 @@
         and let your friends help you do all the heavy lifting.</p>
         <div class="pull-left">
             <form action="trips" method="POST">
-                <input type="text" name="place" id="place" class="large-input" placeholder="Where are you going?" />
+                <input type="text" name="place" id="place" class="large-input" placeholder="Where are you going?" required />
                 <br />
-                <input id="date" type="text" name="date" class="large-input" placeholder="When are you leaving?" />
+                <input id="date" type="text" name="date" class="large-input" placeholder="When are you leaving?" required />
                 <br />
-				<input type="text" name="days" class="large-input" placeholder="How many days are you staying?" />
+				<input type="number" name="days" class="large-input" placeholder="How many days are you staying?" required/>
                 <br />
                 <p><button type="submit" class="btn btn-success btn-large">Let's Go!</a></p>
             </form>

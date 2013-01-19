@@ -1,0 +1,37 @@
+<% include ../includes/header %>
+<div class="container">
+
+  <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit" style="margin-top:60px;background-color:white">
+        <h2>Tell Us About Yourself.</h2>
+        <p>Escape Scout is a new and awesome way to plan trips with your friends and family. After we get a little bit of information about 
+            you, we will send you right along.</p>
+        <div class="pull-left">
+            <form action="/auth/create" method="POST">
+                <div class="control-group">
+                    <input type="text" name="firstName" class="large-input form-field" placeholder="What is your first name?" required />
+                    <p class="help-block form-help"></p>
+                </div>
+                <div class="control-group">
+                    <input type="text" name="lastName" class="large-input form-field" placeholder="What is your last name?" required />
+                    <p class="help-block form-help"></p>
+                </div>
+                <div class="control-group">
+                    <input type="email" name="email" class="large-input form-field" placeholder="What is your email address?" required />
+                    <p class="help-block form-help"></p>
+                </div>
+                <div class="control-group">
+                    <input type="password" name="password" class="large-input form-field" placeholder="What password whould you like to use?" required />
+                    <p class="help-block form-help"></p>
+                </div>
+                <div class="control-group">
+				    <input type="password" data-validation-match-match="password" data-validation-match-message="Passwords do not match."  name="passwordConf" class="large-input form-field" placeholder="Please confirm your password" required/>
+                    <p class="help-block form-help"></p>
+                </div>
+                <br />
+                <div style="clear:both"></div>
+                <p><button type="submit" class="btn btn-success btn-large">Create Account</a></p>
+            </form>
+        </div>
+    <br style="clear:both"/>
+    </div>

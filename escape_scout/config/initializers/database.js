@@ -10,12 +10,13 @@ module.exports = function(){
 
 
 	var User = new Schema({
-		fbId : {type: String, required: true},
+		fbId : {type: String},
 		picture: { type: String},
 		username: {type: String},
 		firstName : {type: String},
 		lastName : {type: String},
-		email : {type: String}
+		email : {type: String},
+		password: {type: String}
 	});
 
 
