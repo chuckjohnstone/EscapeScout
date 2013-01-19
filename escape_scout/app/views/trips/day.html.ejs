@@ -62,6 +62,7 @@
     <hr />
     <div class="accommodations">
         <div class="title">
+            <a href="#addPlace" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="left" title="Add Idea"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
             <p class="pull-left">Where I'm staying or should stay.<p>
         </div> 
         <div style="margin-left:45px;clear:both" class="ideas">
@@ -109,10 +110,23 @@
   <div class="modal-body">
     <form action="/trips/<%=trip._id%>/<%=day._id%>" method="POST">
         <input placeholder="Your super amazing idea for what to do is..." style="width:95%" type="text" name="idea" />
-        <select placeholder="What kind of idea is it?" style="width:98%" name="type">
-            <option value="general">General</option>
-            <option value="accommodation">Accommodation</option>
-        </select>    
+        <input name="type" type="hidden" value="general" />
+        <div class="modal-footer">
+            <button type="submit" href="#" class="btn btn-success">Post Idea</a>
+        </div>
+    </form>
+  </div>
+</div>
+
+<div id="addPlace" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>What's your idea?</h3>
+  </div>
+  <div class="modal-body">
+    <form action="/trips/<%=trip._id%>/<%=day._id%>" method="POST">
+        <input placeholder="Your super amazing idea for where to stay is..." style="width:95%" type="text" name="idea" />
+        <input type="hidden" name="type" value="accommodation" />
         <div class="modal-footer">
             <button type="submit" href="#" class="btn btn-success">Post Idea</a>
         </div>
