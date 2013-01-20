@@ -5,6 +5,7 @@ var AgentController = new Controller();
 var db = new EscapeDB();
 var h = new Helpers();
 var passport = require('passport');
+var moment = require('moment');
 
 passport.deserializeUser(function(id, done) {
 	console.log("FIND", id)
@@ -24,7 +25,7 @@ AgentController.index = function() {
 	db.Trip.find({'owner._id': this.req.user._id}, function (err, trips){
 		self.trips = trips;
 		for (var i=0;i<self.trips.length;i++){
-			self.trips[i].adjustedDate = h.date("F jS", self.trips[i].startDate)
+			self.trips[i].adjustedDate = moment(self.trips[i].startDate).format("MMMM Do");
 		}
 		self.render();
 	});

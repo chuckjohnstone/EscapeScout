@@ -5,6 +5,7 @@ var TripsController = new Controller();
 var db = new EscapeDB();
 var h = new Helpers();
 var passport = require('passport');
+var moment = require('moment');
 
 passport.deserializeUser(function(id, done) {
   db.User.findById(id, function(err, user) {
@@ -45,10 +46,10 @@ TripsController.create = function() {
 	trip.save();
 
 	for (var i=0;i<parseInt(this.days);i++){
-		var tomorrow = new Date().setDate(this.date.getDate() + (i - 1));
-		var day = new db.Day({owner: owner, trip: trip._id, day: i+1, date: tomorrow, location: this.place});
+		var day = new db.Day({owner: owner, trip: trip._id, day: i+1, date: moment(trip.startDate).add('d', i).format(), location: this.place});
 		day.save();
 		trip.days.push(day);
+		moment(trip.startDate).subtract('d', i);
 	}
 	trip.save();
 
@@ -82,7 +83,7 @@ TripsController.showDay = function() {
 			self.owner = true;
 		}
 		self.day = self.trip.days[parseInt(self.param('day')) - 1];
-		self.day.adjustedDate = h.date('l, M j', new Date(self.day.date).getTime());
+		self.day.adjustedDate = moment(self.day.date).format('dddd, MMM Do');
 		console.log(self.day.adjustedDate);
 		self.render('day');
 	});
