@@ -13,6 +13,10 @@ module.exports = function routes() {
 
 	this.match('auth/facebook/callback', { controller: 'auth', action: 'fbCallback' });
 	this.match('auth/facebook', { controller: 'auth', action: 'facebook' });
+
+	this.match('auth/twitter/callback', { controller: 'auth', action: 'twitterCallback' });
+	this.match('auth/twitter', { controller: 'auth', action: 'twitter' });
+
 	this.match('auth/register', {controller: 'auth', action: 'register'});
 	this.match('auth/create', {controller: 'auth', action: 'create', via: "POST"});
 	this.match('auth/login', {controller: 'auth', action:'login', via: 'POST'});

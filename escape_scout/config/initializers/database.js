@@ -10,7 +10,8 @@ module.exports = function(){
 
 
 	var User = new Schema({
-		fbId : {type: String},
+		service : {type: String},
+		serviceId : {type: String},
 		picture: { type: String},
 		username: {type: String},
 		firstName : {type: String},
