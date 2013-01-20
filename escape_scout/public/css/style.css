@@ -41,7 +41,7 @@
 
 .small-p {
     margin-top:0px !important;
-    margin-bottom:15px;
+    margin-bottom:25px;
 }
 
 .login-box {
@@ -66,17 +66,17 @@
     margin: 5px;
 }
 
+.login-buttons{
+    box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 1);
+    margin-top:5px;
+}
+
 .loginBtn {
 	width:100px;
 	height:40px;
 }
-
-.login-button {
-	-webkit-box-shadow: 0px 0px 25px 0px black;
-	   -moz-box-shadow: 0px 0px 25px 0px black;
-	        box-shadow: 0px 0px 25px 0px black;
-}
-
 
 .rounded {
 	border-radius: 20px;
