@@ -160,14 +160,26 @@
         $('.comments').hide();
 
         $("#facebook").click(function(){
+            trackSharing('Facebook');
            window.open('https://www.facebook.com/dialog/feed?app_id=392465224163061&display=popup&link=<%=trip.shortUrl%>&name=Share your trip to <%=trip.place%>&description=Ask your friends for help planning your next adventure!&redirect_uri=http://www.escapescout.com/trips/<%=trip._id%>/1','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
         });
         $("#twitter").click(function(){
+            trackSharing('Twitter');
             window.open('https://www.twitter.com/share?url=<%=trip.shortUrl%>&text=Help me plan my trip to <%=trip.place%>.','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
 
         });
         $("#google").click(function(){
+            trackSharing('Google');
             window.open('https://plus.google.com/share?url=<%=trip.shortUrl%>&text="Help me plan my trip to <%=trip.place%>.','1358306620679','width=580,height=300,toolbar=0,menubar=0,location=0,status=0,scrollbars=0,resizable=0,left=0,top=0');
         });
+
+        function trackSharing(type){
+        $.ajax({
+            url:'/analytics/track-sharing',
+            data: {type: type}
+        });
+    }
     });
+    
+    
 </script>

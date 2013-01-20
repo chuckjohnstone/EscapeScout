@@ -27,7 +27,7 @@ module.exports = function routes() {
 	this.resources('agent');
 
 	
-
+	this.match('analytics/track-sharing', 'trips#trackSharing');
 	this.match('trips/:id/:day', { controller: 'trips', action: 'showDay' });
 	this.match('trips/:id/:day', {controller: 'trips', action: 'idea', via: "POST"});
 	this.match('trips/:id/:day/:idea', {controller: 'trips', action: 'comment', via: "POST"});

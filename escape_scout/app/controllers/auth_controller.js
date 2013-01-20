@@ -6,10 +6,15 @@ var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy
   , TwitterStrategy = require('passport-twitter').Strategy;
 
+ var Mixpanel = require('mixpanel');
+var mixpanel = Mixpanel.init('f71451f7fecbfee2d1ce280e6595461f'); 
+
 var db = new EscapeDB();
 var fs = require('fs');
 
 var salt = "AbACabB";
+
+
 
 passport.serializeUser(function(user, done) {
 	console.log("SERIALIZE", user._id)
@@ -53,6 +58,20 @@ passport.use(new FacebookStrategy({
 		      newUser.save(function(err) {
 		        if(err) {throw err;}
 		        console.log('New user: ' + newUser.firstName + ' created and logged in!');
+
+		        mixpanel.people.set(newUser._id, {
+				    $first_name: newUser.firstName,
+				    $last_name: newUser.lastName,
+				    $email: newUser.email,
+				    $created: new Date().toISOString(),
+				    $service: "facebook",
+				    trips: 0,
+				    ideas: 0,
+				    lodging_ideas:0,
+				    comments: 0,
+	    			trips_shared: 0
+				});
+
 		        done(null, newUser);
 		      }); 
 		    }
@@ -86,6 +105,17 @@ passport.use(new TwitterStrategy({
 	      newUser.save(function(err) {
 	        if(err) {throw err;}
 	        console.log('New user: ' + newUser.firstName + ' created and logged in!');
+	        mixpanel.people.set(newUser._id, {
+			    $first_name: newUser.firstName,
+			    $last_name: newUser.lastName,
+			    $created: new Date().toISOString(),
+			    $service: "twitter",
+			    trips: 0,
+			    ideas: 0,
+			    lodging_ideas:0,
+			    comments: 0,
+	    		trips_shared: 0
+			});
 	        done(null, newUser);
 	      }); 
 	    }
@@ -212,6 +242,20 @@ AuthController.create = function() {
 	});
 
 	user.save();
+
+	mixpanel.people.set(user._id, {
+	    $first_name: user.firstName,
+	    $last_name: user.lastName,
+	    $email: user.email,
+	    $created: new Date().toISOString(),
+	    $service: "local",
+	    trips: 0,
+	    ideas: 0,
+	    lodging_ideas:0,
+	    comments: 0,
+	    trips_shared: 0
+	});
+
 	this.res.redirect("/");
 };
 
