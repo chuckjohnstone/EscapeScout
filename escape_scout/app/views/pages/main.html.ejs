@@ -1,36 +1,54 @@
 <% include ../includes/header %>
+
 		<div>
-			<div class="container">
-				<div class="signup-box">
-					<h1>Escape Scout</h1>
-				    <p>Plan your next adventure with your friends.</p>
-					<br />
-					<br />
-					<center>
-						<% if (locals.error != ""){ %>
-						<div style="width:700px" class="alert alert-error">
-						  		<button type="button" class="close" data-dismiss="alert">&times;</button>
-						  		<%=error%>
-						</div>
-						<% } %>
-						<div class="login-box">
-							<form action="/auth/login" method="POST">
-								<input type="email" name="username" placeholder="Email Address" class="login-input" required/>
-								<input type="password" name="password" placeholder="Password" class="login-input" required/>
-								<button type="submit" class="btn btn-info btn-large" style="padding: 6.8px 21px !important;
-								margin: 5px;">Login</button>
-							</form>
-						</div>
-						<p class="small-p">signup or login with</p>
-						<div>
-							<a href="/auth/facebook"><img src="../img/icon-facebook.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(14, 17, 90);"/></a>
-							<a href="#"><img src="../img/icon-googleplus.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(70, 70, 70);"/></a>
-							<a href="/auth/twitter"><img src="../img/icon-twitter.png" class="img-circle login-buttons" style="width: 50px;border: 1px solid rgb(42, 97, 134);"/></a>
-						</div>
-						<h6>We will not post to Facebook, Twitter, or Google + without your explicit permission.</h6>
-					</center>	
-				</div>
-			</div>	
-		</div>
+			<div class="container-fluid">
+            
+             <!--   Infinite Rotating Images Using jQuery (JavaScript)  -->
+           
+            <div id="rotating-item-wrapper">
+            <img class="rotating-item" src="img/salzburg.png" alt="Salzburg Castle" width="1501" height="997" />
+            <img class="rotating-item" src="img/stvituscathedral.png" alt="St. Vitus Cathedral Prague, CZ" width="1501" height="997" />
+            <img class="rotating-item" src="img/CharlesBridge.png" alt="Charles Bridge Prague, Czech Republic" width="1501" height="997" />
+            <img class="rotating-item" src="img/Heidelberg.png" alt="View from Heidelberg Castle" width="1501" height="997" />
+            <img class="rotating-item" src="img/Schonbrunn.png" alt="Schonnbrunn Palace - Vienna, Austria" width="1501" height="997" />
+            </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <h1>Lorem Ipsum and stuff. You should sign up for EscapeScout because it's the cat's meow.</h1>
+                        <h2>Kids really like it</h2>
+                        <h3>You'll like it too</h3>
+                    </div>
+                    <div class="span6">
+				        <div class="signup-box">
+					       <h1>Escape Scout</h1>
+				            <p>Plan your next adventure with your friends.</p>
+					        <br />
+					        <br />
+					           <center>
+						          <% if (locals.error != ""){ %>
+						      <div style="width:700px" class="alert alert-error">
+						  		      <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  		      <%=error%>
+						      </div>
+						          <% } %>
+						      <div class="login-box">
+							         <form action="/auth/login" method="POST">
+								     <input type="email" name="username" placeholder="Email Address" class="login-input" required/>
+								     <input type="password" name="password" placeholder="Password" class="login-input" required/>
+								     <button type="submit" class="btn btn-info btn-large" style="padding: 6.8px 21px !important; margin: 5px;">Login</button>
+							         </form>
+						      </div>
+						          <p class="small-p">signup or login with</p>
+						       <div>
+							     <a href="/auth/facebook"><img src="../img/icon-facebook.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(14, 17, 90);"/></a>
+							     <a href="#"><img src="../img/icon-googleplus.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(70, 70, 70);"/></a>
+							     <a href="/auth/twitter"><img src="../img/icon-twitter.png" class="img-circle login-buttons" style="width: 50px;border: 1px solid rgb(42, 97, 134);"/></a>
+						      </div>
+						        <h6>We will not post to Facebook, Twitter, or Google + without your explicit permission.</h6>
+					          </center>	
+				         </div>
+			        </div>	
+		        </div>
+               </div>
 </body>
 </html>

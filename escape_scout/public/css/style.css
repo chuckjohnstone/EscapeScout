@@ -1,7 +1,7 @@
-.luggage { 
-  background-image:url('../img/salzburg.png'); 
-  background-size:cover;
-  background-repeat:no-repeat; 
+/* Getting rid of Bootstrap's 20px padding for .container-fluid */
+
+.container-fluid{
+    padding-left:0px;
 }
 
 .wide-box{
@@ -15,6 +15,7 @@
 	color:white;
 	margin-top:20%;
 	text-align:center;
+    z-index:80;
 }
 
 .signup-box h1 {
@@ -220,5 +221,19 @@ p {
     font-weight: normal;
     font-style: normal;
 
+}
+
+#rotating-item-wrapper {
+    position: absolute;
+    width: 1501px;
+    height: 997px;
+    z-index:-1;
+}
+.rotating-item {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:-1; 
 }
 
