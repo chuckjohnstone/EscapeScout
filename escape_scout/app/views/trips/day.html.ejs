@@ -24,11 +24,11 @@
     <div class="ideas">
         <div class="title">
             <a href="#addIdea" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="left" title="Add Idea" style="margin-top: -2px;"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
-            <p class="pull-left" style="margin-left: 8px;">What I'm doing or should do.<p>
+            <p class="pull-left" style="margin-left: 8px; color: black;">Add an idea for your trip.<p>
         </div>    
-        <div style="margin-left:45px;clear:both" class="ideas">
+        <div style="margin-left:55px;clear:both" class="ideas">
             <% if (day.ideas.length == 0) { %>
-            <p class="lead">So many options! Why not add an idea like where to eat and what to do?</p>
+            <p class="lead"></p>
             <% } %>
             <% day.ideas.forEach(function(idea) { 
                 if (idea.type == "general"){ %> 
@@ -46,7 +46,6 @@
                         <strong><%=comment.owner.firstName + " " + comment.owner.lastName%>: </strong><%=comment.text%></span></p>
                     <% });%>
                   
-                <br />
                 <div class="form-actions">
                     <form action="/trips/<%=trip._id%>/<%=day._id%>/<%=idea._id%>" method="POST">    
                         <input name="comment" placeholder="Enter your comment..." class="span8" type="text">
@@ -65,11 +64,11 @@
     <div class="accommodations">
         <div class="title">
             <a href="#addPlace" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="left" title="Add Idea"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
-            <p class="pull-left">Where I'm staying or should stay.<p>
+            <p class="pull-left" style="margin-left: 8px; color: black;">Add a place to stay.<p>
         </div> 
-        <div style="margin-left:45px;clear:both" class="ideas">
+        <div style="margin-left:55px;clear:both" class="ideas">
             <% if (day.ideas.length == 0) { %>
-            <p class="lead">So many options! Why not add an idea like where to eat and what to do?</p>
+            <p class="lead"></p>
             <% } %>
             <% day.ideas.forEach(function(idea) { 
                 if (idea.type == "accommodation"){ %> 
@@ -87,7 +86,7 @@
                         <strong><%=comment.owner.firstName + " " + comment.owner.lastName%>: </strong><%=comment.text%></span></p>
                     <% });%>
                   
-                <br />
+                
                 <div class="form-actions">
                     <form action="/trips/<%=trip._id%>/<%=day._id%>/<%=idea._id%>" method="POST">    
                         <input name="comment" placeholder="Enter your comment..." class="span8" type="text">
@@ -111,7 +110,7 @@
   </div>
   <div class="modal-body">
     <form action="/trips/<%=trip._id%>/<%=day._id%>" method="POST">
-        <input placeholder="Your super amazing idea for what to do is..." style="width:95%" type="text" name="idea" />
+        <input placeholder="Your idea for something to do..." style="width:95%" type="text" name="idea" />
         <input name="type" type="hidden" value="general" />
         <div class="modal-footer">
             <button type="submit" href="#" class="btn btn-success">Post Idea</a>
@@ -127,7 +126,7 @@
   </div>
   <div class="modal-body">
     <form action="/trips/<%=trip._id%>/<%=day._id%>" method="POST">
-        <input placeholder="Your super amazing idea for where to stay is..." style="width:95%" type="text" name="idea" />
+        <input placeholder="Your idea for a place to stay..." style="width:95%" type="text" name="idea" />
         <input type="hidden" name="type" value="accommodation" />
         <div class="modal-footer">
             <button type="submit" href="#" class="btn btn-success">Post Idea</a>
@@ -157,7 +156,7 @@
             console.log($(this).find(".comments"));
             $(this).parent().find('.comments').slideToggle();
         });
-        $('.comments').hide();
+        <!-- $('.comments').hide(); -->
 
         $("#facebook").click(function(){
             trackSharing('Facebook');
