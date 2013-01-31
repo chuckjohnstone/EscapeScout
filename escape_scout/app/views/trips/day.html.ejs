@@ -17,7 +17,7 @@
             <% } %>
         </div>
         <div class="share pull-right">
-            <a class="lead btn btn-info" data-toggle="modal" href="#shareModal">Share Your Trip</a>
+            <a class="lead btn btn-info" data-toggle="modal" href="#shareModal">Ask friends for ideas!</a>
         </div>
     </div> 
     <hr style="clear:both" />
@@ -26,6 +26,11 @@
             <a href="#addIdea" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="left" title="Add Idea" style="margin-top: -2px;"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
             <p class="pull-left" style="margin-left: 8px; color: black;">Add an idea for your trip.<p>
         </div>    
+        <% day.ideas.forEach(function(idea) { %>
+                    <p><img src="<%=idea.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>
+                        <strong><%=idea.owner.firstName + " " + idea.owner.lastName%>: </strong></span></p>
+                    <% });%>
+                    
         <div style="margin-left:55px;clear:both" class="ideas">
             <% if (day.ideas.length == 0) { %>
             <p class="lead"></p>
@@ -35,7 +40,11 @@
                 <div>  
                     <p class="lead idea pull-left" style="cursor:pointer;"><%=idea.text%></p>
                     <div class="pull-right">
+                    
+                    
+                        
                         <span class="label label-inverse"><%=idea.comments.length%> Comments</span>
+                    
                     </div>
                      <div style="margin-left:50px;clear:both" class="comments">
                     <% if (idea.comments.length == 0) { %>
@@ -135,18 +144,21 @@
   </div>
 </div>
 
-<div style="width:580px;height:210px" class="modal hide fade" id="shareModal">
+<div style="width:580px;height:300px" class="modal hide fade" id="shareModal">
     <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Need Some Help Planning Your Trip?</h3>
+    <h3>Ask friends for trip ideas!</h3>
   </div>
   <div class="modal-body">
     <input style="padding:5px;font-size:20px;width:90%" value="<%=trip.shortUrl%>" />
+        <p>Here's a link to your trip, share it with your friends and have them post their ideas and comments (We can't be held responsible for awful ideas).</p>
+
     <div style="margin-top:20px">
         <img src="/img/facebook.png" id="facebook" width="60" height="60" />
         <img src="/img/twitter.png" id="twitter" width="60" height="60" />
         <img src="/img/google.png" id="google" width="60" height="60" />
     </div>
+    <p>Post your trip on Facebook, Twitter, or Google+ and ask friends to add ideas and comments (We won't ever post w/o your permission 'cause we hate Farmville).</p>
   </div>
 </div>
 
