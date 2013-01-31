@@ -22,47 +22,45 @@
     </div> 
     <hr style="clear:both" />
     <div class="ideas">
-        <div class="title">
+        <div class="title" style="padding-bottom:50px";>
             <a href="#addIdea" class="add pull-left" data-toggle="modal" rel="tooltip" data-placement="left" title="Add Idea" style="margin-top: -2px;"><i class="icon-plus icon-white" style="margin-right:7px;"></i></a>
             <p class="pull-left" style="margin-left: 8px; color: black;">Add an idea for your trip.<p>
-        </div>    
-        <% day.ideas.forEach(function(idea) { %>
-                    <p><img src="<%=idea.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>
-                        <strong><%=idea.owner.firstName + " " + idea.owner.lastName%>: </strong></span></p>
-                    <% });%>
+        </div>  
                     
-        <div style="margin-left:55px;clear:both" class="ideas">
+        <div style="margin-left:0px;clear:both" class="ideas">
             <% if (day.ideas.length == 0) { %>
             <p class="lead"></p>
             <% } %>
             <% day.ideas.forEach(function(idea) { 
                 if (idea.type == "general"){ %> 
-                <div>  
-                    <p class="lead idea pull-left" style="cursor:pointer;"><%=idea.text%></p>
-                    <div class="pull-right">
+
+                    <p class="lead idea pull-left" style="cursor:pointer;"><img src="<%=idea.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>
+                        <strong><%=idea.owner.firstName + " " + idea.owner.lastName%>: </strong><%=idea.text%>
+                        </span>
                     
+                        </p>
                     
-                        
+                        <div class="pull-right">
                         <span class="label label-inverse"><%=idea.comments.length%> Comments</span>
                     
-                    </div>
-                     <div style="margin-left:50px;clear:both" class="comments">
-                    <% if (idea.comments.length == 0) { %>
-                        <p>Have something to say about this idea? Let's hear it!</p>
-                    <% } %>
-                    <% idea.comments.forEach(function(comment) { %>
-                    <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>
-                        <strong><%=comment.owner.firstName + " " + comment.owner.lastName%>: </strong><%=comment.text%></span></p>
-                    <% });%>
+                        </div>
+                        <div style="margin-left:50px;clear:both" class="comments">
+                        <% if (idea.comments.length == 0) { %>
+                            <p>Have something to say about this idea? Let's hear it!</p>
+                        <% } %>
+                        <% idea.comments.forEach(function(comment) { %>
+                        <p><img src="<%=comment.owner.picture%>" class="img-rounded" width="40" height="40" style="margin-right:10px" /><span>
+                            <strong><%=comment.owner.firstName + " " + comment.owner.lastName%>: </strong><%=comment.text%></span></p>
+                        <% });%>
                   
-                <div class="form-actions">
-                    <form action="/trips/<%=trip._id%>/<%=day._id%>/<%=idea._id%>" method="POST">    
-                        <input name="comment" placeholder="Enter your comment..." class="span8" type="text">
-                        <button type="submit" style="margin-bottom: 10px;" class="btn btn-success help-inline" type="button">Save</button>
-                    </form>    
-                </div>
-            </div>
-            </div>
+                            <div class="form-actions">
+                                <form action="/trips/<%=trip._id%>/<%=day._id%>/<%=idea._id%>" method="POST">    
+                                <input name="comment" placeholder="Enter your comment..." class="span8" type="text">
+                                <button type="submit" style="margin-bottom: 10px;" class="btn btn-success help-inline" type="button">Save</button>
+                            </form>    
+                            </div>
+                        </div>
+        </div>
             <div style="clear:both"></div>
             <% } %>  
             <% }); %>
