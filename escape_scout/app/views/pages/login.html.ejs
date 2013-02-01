@@ -1,20 +1,22 @@
 <% include ../includes/header %>
 <center>
-
-       
-        <div class="signup-box">
+<div class="container">
+    <div class="signup-box">
             <h1>Escape Scout</h1>
-
+        <div class="login-box">
             <form action="/auth/login" method="POST">
                 <input type="email" name="username" placeholder="Email Address" class="login-input" required/>
                 <input type="password" name="password" placeholder="Password" class="login-input" required/>
                 <button type="submit" class="btn btn-info btn-large" style="padding: 6.8px 21px !important; margin: 5px;">Login</button>
             </form>
         </div>
-            <p class="small-p">signup or login with</p>
-    <div>
-        <a href="/auth/facebook"><img src="../img/icon-facebook.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(14, 17, 90);"/></a>
-        <a href="#"><img src="../img/icon-googleplus.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(70, 70, 70);"/></a>
-        <a href="/auth/twitter"><img src="../img/icon-twitter.png" class="img-circle login-buttons" style="width: 50px;border: 1px solid rgb(42, 97, 134);"/></a>
+        <div>
+                        <p class="small-p">signup or login with</p>
+
+            <a href="/auth/facebook"><img src="../img/icon-facebook.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(14, 17, 90);"/></a>
+            <a href="#"><img src="../img/icon-googleplus.png" class="img-circle login-buttons" style="width: 50px;margin-right: 7px;border: 1px solid rgb(70, 70, 70);"/></a>
+            <a href="/auth/twitter"><img src="../img/icon-twitter.png" class="img-circle login-buttons" style="width: 50px;border: 1px solid rgb(42, 97, 134);"/></a>
+        </div>
     </div>
+</div>
 </center>
