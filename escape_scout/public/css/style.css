@@ -5,15 +5,36 @@
 }
 
 .wide-box{
-	margin-top:100px;
-	width:100%;
+    background-color: rgba(0,0,0,0.8);
 	height:300px;
-	background-color: rgba(0,0,0,0.8);
+    margin-top:100px;
+	width:100%;
+}
+
+.front-desc{
+    color: white;       
+    float:center;
+    height:300px;
+    margin-top:35%;
+    padding-left:50px;
+    text-align:center;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.front-desc h1 {
+    margin-bottom:30px;
+  
+}
+
+.front-desc h2 {
+    padding-top:5px;
 }
 
 .signup-box{
 	color:white;
-	margin-top:20%;
+	margin-top:35%;
 	text-align:center;
     z-index:80;
 }
@@ -227,8 +248,8 @@ p {
 
 #rotating-item-wrapper {
     position: absolute;
-    width: 1501px;
-    height: 997px;
+    width: 1490px;
+    height: 800px;
     z-index:-1;
 }
 .rotating-item {
