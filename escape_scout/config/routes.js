@@ -10,7 +10,8 @@ module.exports = function routes() {
 
 	this.match('/about' ,"pages#about");
 	this.match('/contact', "pages#contact");
-
+    this.match('/login', "pages#login");
+    
 	this.match('auth/facebook/callback', { controller: 'auth', action: 'fbCallback' });
 	this.match('auth/facebook', { controller: 'auth', action: 'facebook' });
 

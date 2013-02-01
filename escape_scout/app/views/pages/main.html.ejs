@@ -36,12 +36,24 @@
 						  		      <%=error%>
 						      </div>
 						          <% } %>
-						      <div class="login-box">
-							         <form action="/auth/login" method="POST">
-								     <input type="email" name="username" placeholder="Email Address" class="login-input" required/>
-								     <input type="password" name="password" placeholder="Password" class="login-input" required/>
-								     <button type="submit" class="btn btn-info btn-large" style="padding: 6.8px 21px !important; margin: 5px;">Login</button>
-							         </form>
+                             
+                            <div class="login-box">
+
+                            <!-- Add signup on front page -->
+                            
+                            <form action="/auth/create" method="POST">
+                            <div class="control-group" style="margin-bottom:0px;">
+				            <input type="email" name="username" placeholder="Email Address" class="login-input" required/>
+                            <p class="help-block form-help"></p>
+                            </div>
+                            <div class="control-group">
+				            <input type="password" name="password" placeholder="Password" class="login-input" required/>
+                            <p class="help-block form-help"></p>
+                            <button type="submit" class="btn btn-info btn-large" style="padding: 6.8px 21px !important; margin: 5px;">Signup</button>
+							 </form>
+                            
+                            <!-- End frontpage signup -->
+                                  								     
 						      </div>
 						          <p class="small-p">signup or login with</p>
 						       <div>

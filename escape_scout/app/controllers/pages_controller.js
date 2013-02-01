@@ -14,4 +14,8 @@ PagesController.about = function() {
 PagesController.contact = function(){
 	this.render();
 }
+    
+PagesController.login = function() {
+    this.render();
+}
 module.exports = PagesController;
