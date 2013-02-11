@@ -273,3 +273,33 @@ p {
     padding-bottom:5px;
 }
 
+/* Login Page */ 
+
+.signup-box-login {
+	color:black;
+	margin-top:25%;
+    z-index:80;
+}
+
+.signup-box-login h1 {
+	font-family: 'Ultra', serif;
+	font-size:60px;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+	margin: 40px;
+}
+
+.signup-box-login p {
+	margin-top:50px;
+	font-size:24px;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Raleway', sans-serif;
+}
+
+.signup-box-login a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+}
